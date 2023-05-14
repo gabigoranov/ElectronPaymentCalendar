@@ -1,6 +1,5 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const AutoLaunch = require('auto-launch');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -33,13 +32,7 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
-let autoLaunch = new AutoLaunch({
-  name: 'Your Payment Calendar',
-  path: app.getPath('exe'),
-});
-autoLaunch.isEnabled().then((isEnabled) => {
-  if (!isEnabled) autoLaunch.enable();
-});
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
